@@ -37,14 +37,16 @@ class AllEvents extends Component {
                     <View>
                       <View>
                         <Image
-                          source={item.photo ? { uri: item.photo } : require(`../../resources/placeholder.png`)}
-                          style={{ flex: 1, height: 200 }}
-                          resizeMode="cover"
+                          source={item.photo ? { uri: item.photo } : require(`../../resources/calendar.png`)}
+                          style={item.photo ? { flex: 1, height: 200 } : { flex: 1, height: 200, alignSelf: `center`}  }
+                          resizeMode="contain"
                         />
                       </View>
                       <View style={styles.listText}>
-                        <Text style={styles.header} onPress={() => push(`SingleEvent`)}>
+
+                        <Text style={styles.header} onPress={() => push(`SingleEvent`, {eventId: item.id} )}>
                           {`Event: ${item.eventName}`}</Text>
+
                         <Text>{`Group: ${item.eventGroup}`}</Text>
                         <Text>{`Date: ${item.date} | Time: ${item.time}`}</Text>
                         <Text>{item.eventCity}</Text>

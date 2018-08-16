@@ -18,6 +18,18 @@ const styles = StyleSheet.create({
     fontSize: 15,
     marginBottom: 5,
   },
+  singleEvent: {
+    flex: 1,
+    backgroundColor: `#fff`,
+    alignItems: `center`,
+    justifyContent: `flex-start`,
+  },
+  singleEventHeader: {
+    fontSize: 20,
+    alignSelf: `center`,
+    marginTop: 20,
+    marginBottom: 20,
+  }
 });
 
 export default styles;
