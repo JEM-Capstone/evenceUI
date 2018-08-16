@@ -1,31 +1,63 @@
 import React, { Component } from 'react';
-import ApolloClient from 'apollo-boost';
-import { ApolloProvider } from 'react-apollo';
-import { Text, View, Button } from 'react-native';
-import FetchAllEvents from './FetchAllEvents';
-import styles from '../styles';
+import { FlatList, ListItem, List, Text, View, Button, Image } from 'react-native';
+import { Query, Mutation } from 'react-apollo';
+import { gql } from 'apollo-boost';
 import { SafeAreaView } from 'react-navigation';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import styles from '../styles';
 
-
-const client = new ApolloClient({
-  uri: `http://localhost:8080/graphql`,
-});
+const allEventsQuery = gql`
+  {
+    events (userId: 1) {
+      id
+      eventName
+      eventGroup
+      date
+      time
+      eventCity
+      photo
+      venueName
+    }
+  }
+`;
 
 class AllEvents extends Component {
-  static navigationOptions = {
-    header: null,
-    // <Ionicons name="icon-name" size={20} color="#4F8EF7" />
-    tabBarIcon: <Ionicons name="ios-alarm" size={20} color="green" />,
-  }
-
   render() {
+    const { navigation: { navigate, push } } = this.props;
     return (
-      <ApolloProvider client={client}>
         <SafeAreaView style={styles.container}>
-          <FetchAllEvents />
+          <View>
+            <Query query={allEventsQuery}>
+              {({ data: { events }, error, loading }) => {
+                if (error) return (<View><Text>There was an error</Text></View>)
+                if (loading) return (<View><Text>Loading the data</Text></View>)
+                return (<FlatList
+                  data={events}
+                  keyExtractor={(item, index) => item.id}
+                  renderItem={({ item }) => (
+                    <View>
+                      <View>
+                        <Image
+                          source={item.photo ? { uri: item.photo } : require(`../../resources/placeholder.png`)}
+                          style={{ flex: 1, height: 200 }}
+                          resizeMode="cover"
+                        />
+                      </View>
+                      <View style={styles.listText}>
+                        <Text style={styles.header} onPress={() => push(`SingleEvent`)}>
+                          {`Event: ${item.eventName}`}</Text>
+                        <Text>{`Group: ${item.eventGroup}`}</Text>
+                        <Text>{`Date: ${item.date} | Time: ${item.time}`}</Text>
+                        <Text>{item.eventCity}</Text>
+                        <Text>{`Venue: ${item.venueName}`}</Text>
+                        <Text />
+                      </View>
+                    </View>
+                  )}
+                />)
+              }}
+            </Query>
+          </View>
         </SafeAreaView>
-      </ApolloProvider>
     );
   }
 }

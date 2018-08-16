@@ -23,7 +23,7 @@ const eventQuery = gql`
 class FetchEvent extends Component {
   render() {
     const { data } = this.props;
-    if (data.loading) { // this loading prop is provided by apollo
+    if (data.loading) {
       return (<Text>Loading...</Text>);
     }
     const {
@@ -38,5 +38,4 @@ class FetchEvent extends Component {
   }
 }
 
-// this stores the event data within the component's props
 export default graphql(eventQuery)(FetchEvent);
