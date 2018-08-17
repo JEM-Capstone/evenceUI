@@ -21,14 +21,14 @@ const styles = StyleSheet.create({
   singleEvent: {
     flex: 1,
     backgroundColor: `#fff`,
-    alignItems: `center`,
     justifyContent: `flex-start`,
   },
   singleEventHeader: {
     fontSize: 20,
-    alignSelf: `center`,
-    marginTop: 20,
-    marginBottom: 20,
+    fontWeight: `bold`,
+    textAlign: `center`,
+    margin: 20,
+    color: `#01b781`
   }
 });
 
