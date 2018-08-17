@@ -14,17 +14,15 @@ import { createStackNavigator } from 'react-navigation';
 const EventStack = createStackNavigator({
   Main: {
     screen: AllEvents,
+    navigationOptions: {
+      header: null
+    }
   },
   SingleEvent: {
     screen: FetchEvent,
   },
 });
 
-// static navigationOptions = {
-//   header: null,
-//   tabBarIcon: <Ionicons name="md-calendar" size={25} color="white" />,
-//   tabBarColor: `#01b781`,
-// }
 
 const RootStack = createMaterialBottomTabNavigator(
   {
@@ -56,9 +54,9 @@ const RootStack = createMaterialBottomTabNavigator(
     },
   },
   {
-    initialRouteName: `Events`, // this will change back to login
+    initialRouteName: `Login`, // this will change back to login
     shifting: true,
-    order: [`Events`, `Favorites`, `Profile`],
+    order: [`Events`, `Favorites`, `Profile`, `Login`],
     barStyle: { backgroundColor: `#01b781` },
   },
 );

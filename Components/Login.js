@@ -41,13 +41,14 @@ export default class Login extends React.Component {
     const redirectUrl = await Linking.getInitialURL();
     console.log('redirectUrl:', redirectUrl)
     // this should change depending on where the server is running
-    const authUrl = `http://172.17.20.3:8080/auth/linkedin`;
+    const authUrl = `http://172.17.21.53:8080/auth/linkedin`;
 
     this.addLinkingListener();
 
     try {
       const authResult = await WebBrowser.openAuthSessionAsync(`http://172.17.20.3:8080/auth/linkedin?${redirectUrl}`, redirectUrl);
       await console.log(`authResult:`, authResult);
+
       await this.setState({ authResult });
       console.log(this.state);
     } catch (err) {
