@@ -1,20 +1,13 @@
 import React from 'react';
-import {
-  Button, StyleSheet, Text, View,
-} from 'react-native';
+import { Button, StyleSheet, Text, View, } from 'react-native';
 import { AuthSession, WebBrowser, Linking } from 'expo';
 import axios from 'axios';
 
-const LI_APP_ID = `867abnxmxsh4a0`;
-const LI_APP_SECRET = `R5xYPXLjHE6BVNBj`;
-// this is something we make up & is supposed to be "hard to guess" - See the following under Step 2 and look for the parameters table
-// https://developer.linkedin.com/docs/oauth2
-const LI_APP_STATE = `HsdHSD89SAD3`;
+
+
 
 export default class Login extends React.Component {
   state = {
-    // result: null,
-    // redirectData: null,
     authResult: {},
   };
 
@@ -46,14 +39,15 @@ export default class Login extends React.Component {
   handleOAuthLogin = async () => {
     // gets the url to direct back to the app after any request to linkedin
     const redirectUrl = await Linking.getInitialURL();
+    console.log('redirectUrl:', redirectUrl)
     // this should change depending on where the server is running
     const authUrl = `http://172.17.20.3:8080/auth/linkedin`;
 
     this.addLinkingListener();
 
     try {
-      const authResult = await WebBrowser.openAuthSessionAsync(`http://172.17.20.3:8080/auth/linkedin`, redirectUrl);
-      await console.log(`inside handleOauthLogin`, authResult);
+      const authResult = await WebBrowser.openAuthSessionAsync(`http://172.17.20.3:8080/auth/linkedin?${redirectUrl}`, redirectUrl);
+      await console.log(`authResult:`, authResult);
       await this.setState({ authResult });
       console.log(this.state);
     } catch (err) {
