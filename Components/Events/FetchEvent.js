@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { gql } from 'apollo-boost';
 import { Query, Mutation } from 'react-apollo';
+import Favoriting from './Favoriting'
 import {
   Text, View, Button, Image, ScrollView, FlatList
 } from 'react-native';
@@ -9,6 +10,7 @@ import styles from '../styles';
 const eventQuery = gql`
   query Event($eventId: ID){
     event(id: $eventId) {
+      id
       eventName
       photo
       date
@@ -25,6 +27,7 @@ const eventQuery = gql`
       webActions
       hostNames
       hostPhotos
+      favorite
     }
   }
 `;
@@ -48,11 +51,12 @@ class FetchEvent extends Component {
               <ScrollView>
               <Text style={styles.singleEventHeader}>{event.eventName}</Text>
               <View>
-              <Image
-                source={event.photo ? { uri: event.photo } : require(`../../resources/calendar.png`)}
-                style={event.photo ? { height: 250, width: 400, alignSelf: `center` } : { height: 230, marginBottom: 20, alignSelf: `center`}  }
-                resizeMode="cover"
-              />
+                <Image
+                  source={event.photo ? { uri: event.photo } : require(`../../resources/calendar.png`)}
+                  style={event.photo ? { height: 250, width: 400, alignSelf: `center` } : { height: 230, marginBottom: 20, alignSelf: `center`}  }
+                  resizeMode="cover"
+                />
+                  <Favoriting eventId={event.id} favorite={event.favorite}/>
             </View>
             <View style={styles.listText}>
               <View style={{marginBottom: 30}}>
@@ -67,10 +71,10 @@ class FetchEvent extends Component {
               <Text style={{ fontStyle: `italic`, marginBottom: 10}}>Event Hosts:</Text>
               <View style={{flexDirection: `row`}}>
                 <View>
-                  {event.hostPhotos.map(photo => <Image source={{uri:photo}} style={{height: 70, width: 70, borderRadius: 35, margin: 7}}/>)}
+                  {event.hostPhotos.map(photo => <Image key={photo} source={{uri:photo}} style={{height: 70, width: 70, borderRadius: 35, margin: 7}}/>)}
                 </View>
                 <View>
-                  {event.hostNames.map(name => <Text style={{flex: 1, top: `8%`, marginLeft: 10}}>{`\n${name}`}</Text>)}
+                  {event.hostNames.map(name => <Text key={name} style={{flex: 1, top: `8%`, marginLeft: 10}}>{`\n${name}`}</Text>)}
                 </View>
               </View>
             </View>

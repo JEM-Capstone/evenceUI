@@ -4,6 +4,7 @@ import { Query, Mutation } from 'react-apollo';
 import { gql } from 'apollo-boost';
 import { SafeAreaView } from 'react-navigation';
 import styles from '../styles';
+import Favoriting from './Favoriting'
 
 const allEventsQuery = gql`
   {
@@ -16,6 +17,7 @@ const allEventsQuery = gql`
       eventCity
       photo
       venueName
+      favorite
     }
   }
 `;
@@ -41,6 +43,9 @@ class AllEvents extends Component {
                           style={item.photo ? { flex: 1, height: 200 } : { flex: 1, height: 200, alignSelf: `center`}  }
                           resizeMode="contain"
                         />
+
+                        <Favoriting eventId={item.id} favorite={item.favorite}/>
+                  
                       </View>
                       <View style={styles.listText}>
 
