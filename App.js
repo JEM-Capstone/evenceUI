@@ -23,6 +23,18 @@ const EventStack = createStackNavigator({
   },
 });
 
+const FavoriteStack = createStackNavigator({
+  Main: {
+    screen: Favorites,
+    navigationOptions: {
+      title: `Favorited Events`
+    }
+  },
+  SingleEvent: {
+    screen: FetchEvent,
+  },
+});
+
 
 const RootStack = createMaterialBottomTabNavigator(
   {
@@ -46,7 +58,7 @@ const RootStack = createMaterialBottomTabNavigator(
       }
     },
     Favorites: {
-      screen: Favorites,
+      screen: FavoriteStack,
       navigationOptions: {
         tabBarIcon: <Ionicons name="ios-heart" size={25} color="white" />,
         tabBarColor: `#e25a9e`,

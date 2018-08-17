@@ -25,7 +25,7 @@ class Favoriting extends Component {
         <Mutation mutation={favoriteEvent}>
           {(favoriteEvent, { data, error, loading }) => {
             if (error) return (<Text>error</Text>)
-            if (loading) return (<Ionicons name="ios-heart" size={40} color="pink" />)
+            if (loading) return (<Ionicons name="ios-heart" size={40} color="#ed3899" />)
             return (
             <Ionicons
               name={favorite ? `ios-heart` : `ios-heart-outline`}
