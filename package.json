@@ -35,7 +35,7 @@
     "npm": "^6.4.0",
     "react": "16.3.1",
     "react-apollo": "^2.1.11",
-    "react-native": "^0.56.0",
+    "react-native": "~0.55.2",
     "react-native-vector-icons": "^5.0.0",
     "react-navigation": "^2.11.2",
     "react-navigation-material-bottom-tabs": "^0.3.0"
