@@ -4,7 +4,9 @@ import { Query, Mutation } from 'react-apollo';
 import { gql } from 'apollo-boost';
 import { SafeAreaView } from 'react-navigation';
 import styles from '../styles';
+import Favoriting from './Favoriting'
 
+//userId will need to be a variable, depending on who is logged in
 const allEventsQuery = gql`
   {
     events (userId: 1) {
@@ -16,10 +18,12 @@ const allEventsQuery = gql`
       eventCity
       photo
       venueName
+      favorite
     }
   }
 `;
 
+//Note to evelyn: you need to sort the data array (by date!) b4 render so it doesn't keep reordering
 class AllEvents extends Component {
   render() {
     const { navigation: { navigate, push } } = this.props;
@@ -41,6 +45,9 @@ class AllEvents extends Component {
                           style={item.photo ? { flex: 1, height: 200 } : { flex: 1, height: 200, alignSelf: `center`}  }
                           resizeMode="contain"
                         />
+
+                        <Favoriting eventId={item.id} favorite={item.favorite}/>
+
                       </View>
                       <View style={styles.listText}>
 
