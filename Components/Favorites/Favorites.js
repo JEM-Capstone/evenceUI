@@ -44,9 +44,9 @@ class Favorites extends Component {
                         resizeMode="contain"
                       />
                     </View>
-                    <View style={styles.listText}>
+                    <View style={styles.favsList}>
                       <Text style={styles.header} onPress={() => push(`SingleEvent`, {eventId: item.id} )}>
-                        {`Event: ${item.eventName}`}</Text>
+                        {`${item.eventName}`}</Text>
                       <Text style={{color: `#e25a9e`}}>{`Date: ${item.date} | Time: ${item.time}`}</Text>
                       <Text />
                     </View>
