@@ -13,7 +13,7 @@ import { createStackNavigator } from 'react-navigation';
 
 const EventStack = createStackNavigator({
   Main: {
-    screen: Login,
+    screen: Profile,
     // screen: AllEvents,
     navigationOptions: {
       header: null

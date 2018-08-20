@@ -29,6 +29,21 @@ const styles = StyleSheet.create({
     textAlign: `center`,
     margin: 20,
     color: `#01b781`
+  },
+  profileWrapper: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    // justifyContent: 'center',
+  },
+  profilePicture: {
+    height: 200,
+    width: 400,
+    // width: '100VW',
+    // alignSelf: 'stretch',
+    // marginTop: 0,
+    // marginRight: 'auto',
+    // marginLeft: 'auto',
   }
 });
 
