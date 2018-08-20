@@ -35,9 +35,7 @@ const eventQuery = gql`
 
 class FetchEvent extends Component {
   render() {
-    console.log(this.props.navigation);
     const { eventId } = this.props.navigation.state.params
-    console.log(typeof eventId);
     return (
       <View style={styles.singleEvent}>
 
@@ -53,20 +51,20 @@ class FetchEvent extends Component {
               <View>
                 <Image
                   source={event.photo ? { uri: event.photo } : require(`../../resources/calendar.png`)}
-                  style={event.photo ? { height: 250, width: 400, alignSelf: `center` } : { height: 230, marginBottom: 20, alignSelf: `center`}  }
+                  style={event.photo ? { height: 250, width: 400, marginBottom: 15, alignSelf: `center` } : { height: 230, marginBottom: 20, alignSelf: `center`}  }
                   resizeMode="cover"
                 />
                   <Favoriting eventId={event.id} favorite={event.favorite}/>
             </View>
-            <View style={styles.listText}>
+            <View style={styles.singleEventText}>
               <View style={{marginBottom: 30}}>
-                <Text style={{lineHeight: 20, fontWeight: `bold`}}>
+                <Text style={{lineHeight: 25, fontWeight: `bold`}}>
                   {`Date: ${event.date} | Time: ${event.time}`
                 + `\n${event.venueName}: ${event.venueAddress}, ${event.eventCity}`}</Text>
-                <Text style={{lineHeight: 20}}>{`Meetup Group: ${event.eventGroup}`}</Text>
+                <Text style={{lineHeight: 25}}>{`Meetup Group: ${event.eventGroup}`}</Text>
               </View>
 
-              <Text style={{ fontStyle: `italic`}}>Event Details:</Text>
+              <Text style={{ fontStyle: `italic`, marginBottom: 5}}>Event Details:</Text>
               <Text style={{marginBottom: 30}}>{event.description}</Text>
               <Text style={{ fontStyle: `italic`, marginBottom: 10}}>Event Hosts:</Text>
               <View style={{flexDirection: `row`}}>
@@ -74,7 +72,7 @@ class FetchEvent extends Component {
                   {event.hostPhotos.map(photo => <Image key={photo} source={{uri:photo}} style={{height: 70, width: 70, borderRadius: 35, margin: 7}}/>)}
                 </View>
                 <View>
-                  {event.hostNames.map(name => <Text key={name} style={{flex: 1, top: `8%`, marginLeft: 10}}>{`\n${name}`}</Text>)}
+                  {event.hostNames.map(name => <Text key={name} style={{flex: 1, top: `5%`, marginLeft: 10}}>{`\n${name}`}</Text>)}
                 </View>
               </View>
             </View>
