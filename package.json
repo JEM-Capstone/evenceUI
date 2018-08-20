@@ -10,7 +10,7 @@
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.11.0",
     "jest-expo": "~27.0.0",
-    "react-native-scripts": "1.14.0",
+    "react-native-scripts": "^1.14.1",
     "react-test-renderer": "16.3.1"
   },
   "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
@@ -26,10 +26,13 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^6.3.1",
+    "ajv": "^6.5.2",
     "apollo-boost": "^0.1.13",
     "axios": "^0.18.0",
     "expo": "^27.0.1",
     "graphql": "^0.13.2",
+    "install": "^0.12.1",
+    "npm": "^6.4.0",
     "react": "16.3.1",
     "react-apollo": "^2.1.11",
     "react-native": "~0.55.2",

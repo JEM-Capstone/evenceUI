@@ -5,14 +5,10 @@ import { gql } from 'apollo-boost';
 import { SafeAreaView } from 'react-navigation';
 import styles from '../styles';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { gql } from 'apollo-boost';
+import { Query, Mutation } from 'react-apollo';
 
-//userId will need to be a variable, depending on who is logged in...
-/*
-query User($userId: ID){
-   user(id: $userId) {
 
-  && ADD variables={{userId} to the <Query>
-*/
 const userQuery = gql`
   {
     user(id: 1) {
