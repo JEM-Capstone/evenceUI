@@ -142,7 +142,7 @@ export default class Login extends React.Component {
       console.log('this is front end user info:', data);
       _storeData = async () => {
         try {
-          await AsyncStorage.setItem(`userId`, data.linkedinId);
+          await AsyncStorage.setItem(`userId`, data.id);
         } catch (error) {
           // Error saving data
         }
