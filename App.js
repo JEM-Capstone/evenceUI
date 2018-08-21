@@ -55,22 +55,23 @@ const RootStack = createMaterialBottomTabNavigator(
       screen: Profile,
       navigationOptions: {
         tabBarIcon: <Ionicons name="ios-contact" size={25} color="white" />,
-        tabBarColor: `#01875f`,
+        tabBarColor: `#0e4eb5`,
       }
     },
     Favorites: {
       screen: FavoriteStack,
       navigationOptions: {
         tabBarIcon: <Ionicons name="ios-heart" size={25} color="white" />,
-        tabBarColor: `#e25a9e`,
+        tabBarColor: `orchid`,
       }
     },
   },
   {
     initialRouteName: `Events`, // this will change back to login
     shifting: true,
-    order: [`Events`, `Favorites`, `Profile`, `Login`],
-    barStyle: { backgroundColor: `#01b781` },
+    order: [`Events`, `Favorites`, `Profile`],
+    barStyle: { backgroundColor: `darkturquoise` },
+    activeTintColor: `white`
   },
 );
 
