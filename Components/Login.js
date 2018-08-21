@@ -6,10 +6,10 @@ import axios from 'axios'
 
 export default class Login extends React.Component {
   state = {
-    serverUrl: `http://172.17.20.3:8080`, // this should change depending on where the server is running
+    serverUrl: `http://172.17.21.53:8080`, // this should change depending on where the server is running
     result: null,
-    accessToken: '',
-    linkedinBasicProfile: '',
+    accessToken: ``,
+    linkedinBasicProfile: ``,
   };
 
   render() {
@@ -24,13 +24,13 @@ export default class Login extends React.Component {
   }
 
   test = async () => {
-    console.log('test!')
+    console.log(`test!`)
     try {
       let clientId = await axios.get(`${this.state.serverUrl}/auth/linkedin/clientid`)
       let clientSecret = await axios.get(`${this.state.serverUrl}/auth/linkedin/clientsecret`)
       let appState = await axios.get(`${this.state.serverUrl}/auth/linkedin/appstate`)
     } catch (err) {
-      console.log('An error',err);
+      console.log(`An error`,err);
       alert(err.message)
     }
   }
@@ -38,6 +38,7 @@ export default class Login extends React.Component {
   handleOAuthLogin = async () => {
     // gets the url to direct back to the app after any request to linkedin
     let redirectUrl = AuthSession.getRedirectUrl()
+    console.log(redirectUrl)
 
 
     let clientId = await axios.get(`${this.state.serverUrl}/auth/linkedin/clientid`)
@@ -48,7 +49,7 @@ export default class Login extends React.Component {
 
     // this check gaurds against CSRF attacks
     if (this.state.result.params.state !== appState.data) {
-      console.log('Not Authorized!') // this should be a more useful message and also throw a HTTP 401 error
+      console.log(`Not Authorized!`) // this should be a more useful message and also throw a HTTP 401 error
     } else {
       await this.getAccessToken(redirectUrl, clientId.data, clientSecret.data)
     }
@@ -57,7 +58,7 @@ export default class Login extends React.Component {
     await this.getBasicUserProfile(this.state.accessToken)
     // Get more complete info on our backend/database
     let backendAuth = await this.handlePassportLogin()
-    console.log('BACKEND AUTH:', backendAuth)
+    console.log(`BACKEND AUTH:`, backendAuth)
   }
 
   // Get an auth code for LinkedIn
@@ -95,7 +96,7 @@ export default class Login extends React.Component {
       await this.setState({ accessToken: res.data.access_token })
       // console.log('Access Token:', this.state.accessToken)
     } catch (err) {
-      console.log('ERROR WHILE GETTING TOKEN:', err)
+      console.log(`ERROR WHILE GETTING TOKEN:`, err)
     }
   }
 
@@ -106,9 +107,9 @@ export default class Login extends React.Component {
       // Get the user info
       let {data} = await axios.get(`https://api.linkedin.com/v1/people/~?oauth2_access_token=${accessToken}&format=json`)
       this.setState({ linkedinBasicProfile: data })
-      console.log('the user data for the frontend:', data)
+      console.log(`the user data for the frontend:`, data)
     } catch(err) {
-      console.log('Error getting user profile:', err)
+      console.log(`Error getting user profile:`, err)
     }
   }
 
@@ -157,8 +158,8 @@ export default class Login extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: `center`,
+    justifyContent: `center`,
   },
 });
 

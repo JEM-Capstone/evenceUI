@@ -12,10 +12,7 @@ const styles = StyleSheet.create({
     marginBottom: 30,
     marginLeft: 10,
     marginRight: 10,
-    paddingLeft: 15,
-    paddingRight: 15,
-    paddingBottom: 15,
-    paddingTop: 15,
+    padding: 15,
     backgroundColor: `#fcf8c4`
   },
   header: {
@@ -55,6 +52,25 @@ const styles = StyleSheet.create({
     alignItems:`center`,
     justifyContent: `center`,
     marginRight: 20
+  },
+  profilePic: {
+    height: 300,
+    width: 300,
+    alignSelf: `center`,
+    borderRadius: 150,
+    marginTop: 30
+  },
+  profileTextContainer: {
+    marginTop: 10,
+    marginBottom: 20,
+    marginLeft: 10,
+    marginRight: 10,
+    padding: 10,
+    backgroundColor: `#c9d1e2`
+  },
+  profileEditableText: {
+    lineHeight: 23,
+    fontSize: 14
   }
 });
 

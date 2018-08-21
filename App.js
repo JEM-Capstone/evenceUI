@@ -13,8 +13,7 @@ import { createStackNavigator } from 'react-navigation';
 
 const EventStack = createStackNavigator({
   Main: {
-    screen: Login,
-    // screen: AllEvents,
+    screen: AllEvents,
     navigationOptions: {
       header: null
     }
@@ -67,7 +66,7 @@ const RootStack = createMaterialBottomTabNavigator(
     },
   },
   {
-    initialRouteName: `Events`, // this will change back to login
+    initialRouteName: `Profile`, // this will change back to login
     shifting: true,
     order: [`Events`, `Favorites`, `Profile`],
     barStyle: { backgroundColor: `darkturquoise` },

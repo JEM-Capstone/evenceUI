@@ -69,7 +69,9 @@ class FetchEvent extends Component {
               <Text style={{ fontStyle: `italic`, marginBottom: 10}}>Event Hosts:</Text>
               <View style={{flexDirection: `row`}}>
                 <View>
-                  {event.hostPhotos.map(photo => <Image key={photo} source={{uri:photo}} style={{height: 70, width: 70, borderRadius: 35, margin: 7}}/>)}
+                  {event.hostPhotos.map(photo => (
+                    <Image key={photo} source={ photo ? { uri: photo } : require(`../../resources/host-placeholder.jpg`) } style={{height: 70, width: 70, borderRadius: 35, margin: 7}}/> 
+                  ))}
                 </View>
                 <View>
                   {event.hostNames.map(name => <Text key={name} style={{flex: 1, top: `5%`, marginLeft: 10}}>{`\n${name}`}</Text>)}
