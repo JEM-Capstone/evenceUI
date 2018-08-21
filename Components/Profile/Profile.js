@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { Text, View, Button, Image } from 'react-native';
+import { Text, View, Button, Image, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 import styles from '../styles';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { gql } from 'apollo-boost';
 import { Query, Mutation } from 'react-apollo';
+import { LinearGradient } from 'expo';
 
 const userQuery = gql`
   query User($linkedinId: String){
@@ -21,6 +22,21 @@ const userQuery = gql`
     }
   }
 `;
+// const userQuery = gql`
+//   {
+//     user(linkedinId: $linkedinId) {
+//       id
+//       email
+//       nameFirst
+//       nameLast
+//       industry
+//       linkedinId
+//       headline
+//       area
+//       picUrl
+//     }
+//   }
+// `;
 
 
 class Profile extends Component {
@@ -35,13 +51,21 @@ class Profile extends Component {
               if (loading) return (<View><Text>Loading</Text></View>)
               console.log('the user', user)
               return (
-                <View >
-                  <Image
-                    source={user.picUrl ? { uri: user.picUrl } : require(`../../resources/placeholder.png`)}
-                    style={styles.profilePicture}  />
-                  <Text>{user.nameFirst} {user.nameLast}</Text>
-                  <Text>{user.picUrl}</Text>
 
+                <View >
+                  <ScrollView>
+                    <View style={styles.profileHeader}>
+                      <View>
+                        <Image
+                          source={user.picUrl ? { uri: user.picUrl } : require(`../../resources/placeholder.png`)}
+                          style={styles.profilePicture}  />
+                      </View>
+                    </View>
+                    <View style={styles.profileTitleWrapper}>
+                      <Text style={styles.profileName}>{user.nameFirst} {user.nameLast}</Text>
+                      <Text>{user.area}</Text>
+                    </View>
+                  </ScrollView>
                 </View>
               )
             }}
