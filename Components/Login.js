@@ -61,7 +61,7 @@ export default class Login extends React.Component {
     // await this.getBasicUserProfile(this.state.accessToken);
     // Get more complete info on our backend/database
     let backendAuth = await this.handlePassportLogin();
-    console.log('BACKEND AUTH:', backendAuth);
+    // console.log('BACKEND AUTH:', backendAuth);
   };
 
   // Get an auth code for LinkedIn
@@ -124,6 +124,16 @@ export default class Login extends React.Component {
     console.log(`data in handleRedirect`, data);
   };
 
+  storeData = async data => {
+    try {
+      await AsyncStorage.setItem(`userId`, data);
+      console.log('storing the user:', data);
+    } catch (error) {
+      // Error saving data
+      console.log('error inside storedata:', error);
+    }
+  };
+
   // Login...AGAIN --> This time using passport & all on the backend so that we can save the more complete user info made available when passport is used
   handlePassportLogin = async () => {
     // gets the url to direct back to the app after any request to linkedin
@@ -140,13 +150,9 @@ export default class Login extends React.Component {
         `${this.state.serverUrl}/auth/linkedin/user`
       );
       console.log('this is front end user info:', data);
-      _storeData = async () => {
-        try {
-          await AsyncStorage.setItem(`userId`, data.id);
-        } catch (error) {
-          // Error saving data
-        }
-      };
+
+      this.storeData(data.id + '');
+
       // await this.setState({ authResult });
       // Below ostensibly returns a user profile - but it currently isn't
       // let userAttempt = await axios.get(`http://172.17.20.3:8080/auth/linkedin/me`)
