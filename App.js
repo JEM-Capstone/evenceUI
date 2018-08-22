@@ -76,7 +76,7 @@ const RootStack = createMaterialBottomTabNavigator(
   {
     initialRouteName: `Events`, // this will change back to login
     shifting: true,
-    order: [`Events`, `Favorites`, `Profile`, 'Login'],
+    order: [`Events`, `Favorites`, `Profile`],
     barStyle: { backgroundColor: `darkturquoise` },
     activeTintColor: `white`,
   }

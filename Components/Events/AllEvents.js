@@ -62,7 +62,7 @@ class AllEvents extends Component {
               variables={{ userId: this.state.userId }}
               pollInterval={500}
             >
-              {({ data: { events }, error, loading }) => {
+              {({ data: { events }, error, loading, stopPolling }) => {
                 if (error)
                   return (
                     <View>
@@ -77,6 +77,9 @@ class AllEvents extends Component {
                   );
                 if (events.length === 0 || !events)
                   return <Text> fetching events! </Text>;
+                if (events.length > 10) {
+                  stopPolling();
+                }
 
                 return (
                   <FlatList
