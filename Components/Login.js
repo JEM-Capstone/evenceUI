@@ -2,15 +2,20 @@ import React from 'react'
 import { Button, StyleSheet, Text, View, Linking } from 'react-native'
 import { AuthSession, WebBrowser } from 'expo'
 import axios from 'axios'
+import { serverUrl, appUrl } from '../urls.js'
 
 
 export default class Login extends React.Component {
   state = {
-    serverUrl: `http://192.168.1.100:8080`, // this should change depending on where the server is running
+    serverUrl: `${serverUrl}`, // this should change depending on where the server is running
     result: null,
     accessToken: '',
     linkedinBasicProfile: '',
   };
+
+  componentDidMount() {
+    console.log('my urls:', serverUrl, appUrl)
+  }
 
   render() {
     const { navigate } = this.props.navigation
