@@ -9,6 +9,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import {findFood, findBev} from '../utils'
 import styles from '../styles';
 
+
 const eventQuery = gql`
   query Event($eventId: ID){
     event(id: $eventId) {

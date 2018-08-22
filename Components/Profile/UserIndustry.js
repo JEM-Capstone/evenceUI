@@ -18,7 +18,7 @@ class UserIndustry extends Component {
     return (
       <View style={{flexDirection: `row`, justifyContent: `center`, alignItems:`center`,}}>
         <Text style={{marginRight: 5, fontSize: 15}}>Industry: </Text>
-        <TextInput style={{padding: 5, height: 30, width: 150, borderColor: `silver`, borderWidth: 1}}
+        <TextInput style={{padding: 5, height: 30, width: 200, borderColor: `silver`, borderWidth: 1}}
         onChangeText={(industry) => this.setState({industry})}
         value={this.state.industry}
         />

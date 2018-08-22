@@ -6,6 +6,7 @@ import {
   View,
   Linking,
   AsyncStorage,
+  Image
 } from 'react-native';
 import { AuthSession, WebBrowser } from 'expo';
 import axios from 'axios';
@@ -14,30 +15,30 @@ import { AllEvents } from './Events/AllEvents';
 
 export default class Login extends React.Component {
   state = {
-    serverUrl: `http://172.17.21.36:8080`, // this should change depending on where the server is running
+    serverUrl: `http://172.17.21.53:8080`, // this should change depending on where the server is running
     result: null,
-    accessToken: '',
-    linkedinBasicProfile: '',
+    accessToken: ``,
+    linkedinBasicProfile: ``,
     userId: null,
   };
 
   async componentDidMount() {
     // await AsyncStorage.clear();
     const userId = await findUser();
-    console.log('inside did mount login:', userId);
-    console.log('component props for login:', this.props);
+    console.log(`inside did mount login:`, userId);
+    console.log(`component props for login:`, this.props);
     if (userId) {
-      this.props.navigation.replace('Main');
+      this.props.navigation.replace(`Main`);
     }
   }
 
   async componentDidUpdate() {
     // await AsyncStorage.clear();
     const userId = await findUser();
-    console.log('inside did update login:', userId);
-    console.log('component props for login:', this.props);
+    console.log(`inside did update login:`, userId);
+    console.log(`component props for login:`, this.props);
     if (userId) {
-      this.props.navigation.replace('Main');
+      this.props.navigation.replace(`Main`);
     }
   }
 
@@ -45,8 +46,14 @@ export default class Login extends React.Component {
     const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
+        <Text style={{fontSize: 25, color: `darkturquoise`, marginBottom: 20}}>Welcome to Evence!</Text>
+        <Image
+          source={require(`../resources/evence-logo.png`)}
+          style={{height: 250, marginBottom: 20}}
+          resizeMode="contain"
+        />
         <Button
-          title="| Login with LinkedIn |"
+          title="Login with LinkedIn"
           onPress={this.handleOAuthLogin}
         />
         {this.state.result ? (
@@ -75,10 +82,10 @@ export default class Login extends React.Component {
   storeData = async data => {
     try {
       await AsyncStorage.setItem(`userId`, data);
-      console.log('storing the user:', data);
+      console.log(`storing the user:`, data);
     } catch (error) {
       // Error saving data
-      console.log('error inside storedata:', error);
+      console.log(`error inside storedata:`, error);
     }
   };
 
@@ -97,9 +104,9 @@ export default class Login extends React.Component {
       const { data } = await axios.get(
         `${this.state.serverUrl}/auth/linkedin/user`
       );
-      console.log('this is front end user info:', data);
+      console.log(`this is front end user info:`, data);
 
-      this.storeData(data.id + '');
+      this.storeData(data.id + ``);
       this.setState({ userId: data.id });
     } catch (err) {
       console.log(`A MASSIVE ERROR`, err);

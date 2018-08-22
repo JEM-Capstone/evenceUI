@@ -15,6 +15,7 @@ import styles from '../styles';
 import Favoriting from './Favoriting';
 import { findFood, findBev, findUser } from '../utils';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import Splash from '../Splash'
 
 //userId will need to be a variable, depending on who is logged in
 const allEventsQuery = gql`
@@ -44,7 +45,7 @@ class AllEvents extends Component {
 
   async componentDidMount() {
     const userId = await findUser();
-    console.log('inside allevents, this should be user:', userId);
+    console.log(`inside allevents, this should be user:`, userId);
     this.setState({ userId: userId });
   }
 
@@ -72,11 +73,11 @@ class AllEvents extends Component {
                 if (loading)
                   return (
                     <View>
-                      <Text>Loading the data</Text>
+                      <Splash />
                     </View>
                   );
                 if (events.length === 0 || !events)
-                  return <Text> fetching events! </Text>;
+                  return <Splash />;
                 if (events.length > 10) {
                   stopPolling();
                 }
