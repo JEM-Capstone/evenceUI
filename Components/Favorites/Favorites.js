@@ -36,19 +36,19 @@ class Favorites extends Component {
                 renderItem={({ item }) => {
                   if (item.favorite) {
                   return (
-                  <View>
+                  <View style={styles.infoBox}>
                     <View>
                       <Image
                         source={item.photo ? { uri: item.photo } : require(`../../resources/calendar.png`)}
-                        style={item.photo ? { flex: 1, height: 200 } : { flex: 1, height: 200, alignSelf: `center`}  }
+                        style={item.photo ? { flex: 1, height: 180 } : { flex: 1, height: 180, alignSelf: `center`}  }
                         resizeMode="contain"
                       />
                     </View>
-                    <View style={styles.favsList}>
+                    <View style={{marginTop: 10, flexWrap: `wrap`, flexDirection: `row`}}>
                       <Text style={styles.header} onPress={() => push(`SingleEvent`, {eventId: item.id} )}>
                         {`${item.eventName}`}</Text>
                       <Text style={{color: `#e25a9e`}}>{`Date: ${item.date} | Time: ${item.time}`}</Text>
-                      <Text />
+
                     </View>
                   </View>
                 )}}}
