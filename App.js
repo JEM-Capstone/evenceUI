@@ -70,11 +70,29 @@ const RootStack = createMaterialBottomTabNavigator(
     },
   },
   {
-    initialRouteName: `Login`, // this will change back to login
+    initialRouteName: `Events`, // this will change back to login
     shifting: true,
     order: [`Events`, `Favorites`, `Profile`, 'Login'],
     barStyle: { backgroundColor: `darkturquoise` },
     activeTintColor: `white`,
+  }
+);
+
+const LoginStack = createStackNavigator(
+  {
+    Login: {
+      screen: Login,
+    },
+    Main: {
+      screen: RootStack,
+    },
+  },
+  {
+    mode: 'modal',
+    navigationOptions: {
+      initialRouteName: `Login`,
+      header: null,
+    },
   }
 );
 
@@ -86,7 +104,7 @@ class App extends React.Component {
   render() {
     return (
       <ApolloProvider client={client}>
-        <RootStack />
+        <LoginStack />
       </ApolloProvider>
     );
   }

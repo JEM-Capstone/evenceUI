@@ -37,13 +37,17 @@ const allEventsQuery = gql`
 `;
 
 class AllEvents extends Component {
-  state = { userId: null };
+  state = {
+    userId: null,
+    eventsLoaded: false,
+  };
 
   async componentDidMount() {
     const userId = await findUser();
     console.log('inside allevents, this should be user:', userId);
     this.setState({ userId: userId });
   }
+
   render() {
     const {
       navigation: { navigate, push },
@@ -56,8 +60,10 @@ class AllEvents extends Component {
             <Query
               query={allEventsQuery}
               variables={{ userId: this.state.userId }}
+              pollInterval={500}
             >
               {({ data: { events }, error, loading }) => {
+                console.log('inside allevents data render', events);
                 if (error)
                   return (
                     <View>
@@ -70,6 +76,9 @@ class AllEvents extends Component {
                       <Text>Loading the data</Text>
                     </View>
                   );
+                if (events.length === 0 || !events) {
+                  return <Text> fetching events! </Text>;
+                }
                 return (
                   <FlatList
                     data={events}
