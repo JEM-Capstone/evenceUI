@@ -2,19 +2,25 @@ import { AsyncStorage } from 'react-native';
 
 const foodArray = [
   `food`,
+  `Food`,
   `sandwiches`,
   `appetizers`,
   `snacks`,
+  `Snacks`,
   `pizza`,
   `pizzas`,
   `tacos`,
 ];
 const bevArray = [
   `drinks`,
+  `Drinks`,
   `alcohol`,
   `beverage`,
   `beverages`,
+  `Beverage`,
+  `Beverages`,
   `cocktails`,
+  `Cocktails`,
   `beer`,
   `beers`,
   `liquor`,

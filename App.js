@@ -13,6 +13,7 @@ import {
   FetchEvent,
   Favorites,
   Profile,
+  Splash,
 } from './Components/index';
 import { createStackNavigator } from 'react-navigation';
 
@@ -44,6 +45,9 @@ const RootStack = createMaterialBottomTabNavigator(
   {
     Login: {
       screen: Login,
+    },
+    Splash: {
+      screen: Splash,
     },
     SingleEvent: {
       screen: FetchEvent,

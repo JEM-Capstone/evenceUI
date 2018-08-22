@@ -49,14 +49,19 @@ class Favorites extends Component {
               {({ data: { events }, error, loading }) => {
                 if (error)
                   return (
+                  <View style={styles.infoBox}>
                     <View>
-                      <Text>There was an error</Text>
+                      <Image
+                        source={item.photo ? { uri: item.photo } : require(`../../resources/calendar.png`)}
+                        style={item.photo ? { flex: 1, height: 180 } : { flex: 1, height: 180, alignSelf: `center`}  }
+                        resizeMode="contain"
+                      />
                     </View>
-                  );
-                if (loading)
-                  return (
-                    <View>
-                      <Text>Loading the data</Text>
+                    <View style={{marginTop: 10, flexWrap: `wrap`, flexDirection: `row`}}>
+                      <Text style={styles.header} onPress={() => push(`SingleEvent`, {eventId: item.id} )}>
+                        {`${item.eventName}`}</Text>
+                      <Text style={{color: `#e25a9e`}}>{`Date: ${item.date} | Time: ${item.time}`}</Text>
+
                     </View>
                   );
                 return (

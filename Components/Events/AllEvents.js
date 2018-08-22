@@ -63,7 +63,6 @@ class AllEvents extends Component {
               pollInterval={500}
             >
               {({ data: { events }, error, loading }) => {
-                console.log('inside allevents data render', events);
                 if (error)
                   return (
                     <View>
@@ -76,9 +75,9 @@ class AllEvents extends Component {
                       <Text>Loading the data</Text>
                     </View>
                   );
-                if (events.length === 0 || !events) {
+                if (events.length === 0 || !events)
                   return <Text> fetching events! </Text>;
-                }
+
                 return (
                   <FlatList
                     data={events}
@@ -95,12 +94,7 @@ class AllEvents extends Component {
                             style={
                               item.photo
                                 ? { flex: 1, height: 180 }
-                                : {
-                                    flex: 1,
-                                    height: 180,
-                                    margin: 10,
-                                    alignSelf: `center`,
-                                  }
+                                : { flex: 1, height: 180, alignSelf: `center` }
                             }
                             resizeMode="contain"
                           />
@@ -111,12 +105,18 @@ class AllEvents extends Component {
                           />
                         </View>
                         <View>
-                          <View style={{ margin: 10, flexDirection: `row` }}>
+                          <View
+                            style={{
+                              marginTop: 10,
+                              marginBottom: 3,
+                              flexDirection: `row`,
+                            }}
+                          >
                             {item.rsvps > 20 && (
                               <Ionicons
                                 name={`ios-flame`}
                                 size={40}
-                                color="#ff7f7f"
+                                color="#8ee2e2"
                                 style={{ marginRight: 20 }}
                               />
                             )}
@@ -125,14 +125,14 @@ class AllEvents extends Component {
                               (1000 * 3600 * 24) <
                               7 && (
                               <Ionicons
-                                name={`ios-time-outline`}
+                                name={`ios-time`}
                                 size={40}
                                 color="#8ee2e2"
                                 style={{ marginRight: 20 }}
                               />
                             )}
 
-                            {item.pastEvents > 40 && (
+                            {item.pastEvents > 50 && (
                               <Ionicons
                                 name={`ios-pulse`}
                                 size={40}
