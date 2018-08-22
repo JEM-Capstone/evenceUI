@@ -47,7 +47,7 @@ class AllEvents extends Component {
                       <View>
                         <Image
                           source={item.photo ? { uri: item.photo } : require(`../../resources/calendar.png`)}
-                          style={item.photo ? { flex: 1, height: 180 } : { flex: 1, height: 180, margin: 10, alignSelf: `center`}  }
+                          style={item.photo ? { flex: 1, height: 180 } : { flex: 1, height: 180, alignSelf: `center`}  }
                           resizeMode="contain"
                         />
 
@@ -55,12 +55,12 @@ class AllEvents extends Component {
 
                       </View>
                       <View>
-                        <View style={{margin: 10, flexDirection: `row`}}>
+                        <View style={{marginTop: 10, marginBottom: 3, flexDirection: `row`}}>
                           {item.rsvps > 20 &&
-                          <Ionicons name={`ios-flame`} size={40} color="#ff7f7f" style={{marginRight: 20}} />}
+                          <Ionicons name={`ios-flame`} size={40} color="#8ee2e2" style={{marginRight: 20}} />}
 
                           {((new Date(item.date)) - new Date(Date.now()))/(1000 * 3600 * 24) < 7 &&
-                          <Ionicons name={`ios-time-outline`} size={40} color="#8ee2e2" style={{marginRight: 20}}/>}
+                          <Ionicons name={`ios-time`} size={40} color="#8ee2e2" style={{marginRight: 20}}/>}
 
                           {item.pastEvents > 40 &&
                           <Ionicons name={`ios-pulse`} size={40} color="#8ee2e2" style={{marginRight: 20}} />}

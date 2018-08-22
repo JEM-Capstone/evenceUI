@@ -1,6 +1,6 @@
 
-const foodArray = [`food`, `sandwiches`, `appetizers`, `snacks`, `pizza`, `pizzas`, `tacos`]
-const bevArray = [`drinks`, `alcohol`, `beverage`, `beverages`, `cocktails`, `beer`, `beers`, `liquor`]
+const foodArray = [`food`, `Food`, `sandwiches`, `appetizers`, `snacks`, `Snacks`, `pizza`, `pizzas`, `tacos`]
+const bevArray = [`drinks`, `Drinks`, `alcohol`, `beverage`, `beverages`, `Beverage`, `Beverages`, `cocktails`, `Cocktails`, `beer`, `beers`, `liquor`]
 
 export const findFood = (searchText) => {
   foodResult = foodArray.map(word => searchText.search(word))

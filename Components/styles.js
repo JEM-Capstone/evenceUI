@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
   },
   infoBox: {
     marginTop: 10,
-    marginBottom: 30,
+    marginBottom: 20,
     marginLeft: 10,
     marginRight: 10,
     padding: 15,
@@ -27,8 +27,8 @@ const styles = StyleSheet.create({
   },
   singleEventText: {
     marginBottom: 15,
-    marginLeft: 15,
-    marginRight: 15,
+    marginLeft: 10,
+    marginRight: 10,
   },
   singleEventHeader: {
     fontSize: 20,
