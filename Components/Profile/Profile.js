@@ -5,6 +5,7 @@ import { gql } from 'apollo-boost';
 import { SafeAreaView } from 'react-navigation';
 import styles from '../styles';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { findUser } from '../utils';
 import UserLocation from './UserLocation'
 import UserIndustry from './UserIndustry'
 
@@ -29,16 +30,19 @@ const userQuery = gql`
 
 
 class Profile extends Component {
-  constructor(props){
-    super(props)
-    this.state = {
-      location: ``,
-      industry: ``}
-    }
+  state = { userId: null };
+
+  async componentDidMount() {
+    const userId = await findUser();
+    console.log('inside profile:', userId);
+    this.setState({ userId: userId });
+  }
 
   render() {
+    console.log('this state in profile:', this.state.userId);
     return (
       <SafeAreaView style={styles.container}>
+      {this.state.userId && (
         <Query query={userQuery} variables={{userId: 1}}>
           {({ data: { user }, error, loading }) => {
             if (error) return (<View><Text>There was an error</Text></View>)
@@ -60,11 +64,37 @@ class Profile extends Component {
 
                     {/* {user.apiArray.map(keyword => <Text key={keyword} style={styles.profileEditableText}>{keyword}</Text>)} */}
                   </View>
-                </ScrollView>
-              </View>
-            )
-          }}
-        </Query>
+                );
+              return (
+                <View>
+                  <ScrollView>
+                    <Image
+                      source={
+                        user.picUrl
+                          ? { uri: user.picUrl }
+                          : require(`../../resources/user-placeholder.jpg`)
+                      }
+                      style={
+                        user.picUrl
+                          ? { height: 400, width: 400, alignSelf: `center` }
+                          : {
+                              alignSelf: `center`,
+                              height: 400,
+                              width: 400,
+                              borderRadius: 50,
+                            }
+                      }
+                      resizeMode="contain"
+                    />
+                    <View>
+                      <Text>This is where you see your profile</Text>
+                    </View>
+                  </ScrollView>
+                </View>
+              );
+            }}
+          </Query>
+        )}
       </SafeAreaView>
     );
   }
