@@ -34,8 +34,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#E8F0F7',
     alignItems: 'center',
-    // justifyContent: 'center',
-    // marginLeft: 20,
   },
   profileHeader: {
     flex: 1,
@@ -43,9 +41,6 @@ const styles = StyleSheet.create({
     height: 250,
     backgroundColor: 'rgba(100,0,255, 0.99)',
     alignItems: 'center',
-    // justifyContent: 'center',
-    // borderBottomColor: '#000000',
-    // borderBottomWidth: 6,
     shadowColor: '#000000',
     shadowRadius: 15,
     shadowOpacity: 5,
@@ -54,28 +49,18 @@ const styles = StyleSheet.create({
     // flex: 1,
     height: 200,
     width: 200,
-    // width: '100VW',
-    // alignSelf: 'stretch',
     marginTop: 120,
-    // marginBottom: 0,
-    // marginRight: 'auto',
-    marginLeft: 50,
+    marginLeft: -30,
     borderRadius: 0,
   },
   profileName: {
     fontSize: 40,
-    // textShadowColor: '#000000',
-    // textShadowOffset: {width: 1, height: 1},
-    // textShadowRadius: 7,
   },
   profileTitleWrapper: {
     paddingLeft: 10,
     marginTop: 100,
     marginRight: 40,
     marginLeft: 0,
-    // borderWidth: 1,
-    // borderColor: '#000000',
-    // backgroundColor: '#D98C8E',
   }
 });
 

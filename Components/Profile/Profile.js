@@ -22,22 +22,18 @@ const userQuery = gql`
     }
   }
 `;
-// const userQuery = gql`
-//   {
-//     user(linkedinId: $linkedinId) {
+// const location = gql`
+//   mutation Location($userId: ID) {
+//     location(id: $userId) {
 //       id
-//       email
-//       nameFirst
-//       nameLast
-//       industry
-//       linkedinId
-//       headline
 //       area
-//       picUrl
 //     }
 //   }
 // `;
 
+// <Button
+//   onPress={() => location({ variables: { userId: userId }})}
+// >Update City</Button>
 
 class Profile extends Component {
 
@@ -65,6 +61,7 @@ class Profile extends Component {
                       <Text style={styles.profileName}>{user.nameFirst} {user.nameLast}</Text>
                       <Text>{user.area}</Text>
                     </View>
+
                   </ScrollView>
                 </View>
               )

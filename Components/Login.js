@@ -6,7 +6,7 @@ import axios from 'axios'
 
 export default class Login extends React.Component {
   state = {
-    serverUrl: `http://172.17.20.3:8080`, // this should change depending on where the server is running
+    serverUrl: `http://192.168.1.100:8080`, // this should change depending on where the server is running
     result: null,
     accessToken: '',
     linkedinBasicProfile: '',
