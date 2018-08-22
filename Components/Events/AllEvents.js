@@ -62,7 +62,7 @@ class AllEvents extends Component {
                           {((new Date(item.date)) - new Date(Date.now()))/(1000 * 3600 * 24) < 7 &&
                           <Ionicons name={`ios-time`} size={40} color="#8ee2e2" style={{marginRight: 20}}/>}
 
-                          {item.pastEvents > 40 &&
+                          {item.pastEvents > 50 &&
                           <Ionicons name={`ios-pulse`} size={40} color="#8ee2e2" style={{marginRight: 20}} />}
 
                           {findFood(item.description) > 0 &&

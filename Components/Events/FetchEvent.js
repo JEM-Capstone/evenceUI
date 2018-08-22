@@ -3,7 +3,7 @@ import { gql } from 'apollo-boost';
 import { Query, Mutation } from 'react-apollo';
 import Favoriting from './Favoriting'
 import {
-  Text, View, Button, Image, ScrollView, FlatList
+  Text, View, Button, Image, ScrollView, FlatList, Linking, TouchableHighlight
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {findFood, findBev} from '../utils'
@@ -60,9 +60,16 @@ class FetchEvent extends Component {
             </View>
             <View style={styles.singleEventText}>
               <View style={{marginBottom: 20, padding: 10, backgroundColor: `#cff9f9`}}>
-                <Text style={{lineHeight: 30, fontWeight: `bold`}}>{`Date: ${event.date} | Time: ${event.time}`}</Text>
-                <Text style={{lineHeight: 15, fontWeight: `bold`}}>{`${event.venueName}: ${event.venueAddress}, ${event.eventCity}`}</Text>
-                <Text style={{lineHeight: 30, fontWeight: `bold`}}>{`Meetup Group: ${event.eventGroup}`}</Text>
+                <Text style={{marginBottom: 8, fontWeight: `bold`}}>{`Date: ${event.date}  |  Time: ${event.time}`}</Text>
+                <Text style={{marginBottom: 8, fontWeight: `bold`}}>{`${event.venueName}: ${event.venueAddress}, ${event.eventCity}`}</Text>
+                <Text style={{marginBottom: 8, fontWeight: `bold`}}>{event.eventGroup}</Text>
+
+                <TouchableHighlight
+                  onPress={() => Linking.openURL(event.directLink)}
+                  underlayColor={`#cff9f9`}>
+                  <Text style={{color: `#0e4eb5`}}>Click here to RSVP</Text>
+                </TouchableHighlight>
+
               </View>
 
                 <Text style={{ fontWeight: `bold`, marginBottom: 10}}>Event Details:</Text>

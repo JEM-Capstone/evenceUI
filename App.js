@@ -6,7 +6,7 @@ import { createMaterialBottomTabNavigator } from 'react-navigation-material-bott
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import expo from 'expo';
 import {
-  Test, SecondTest, Login, AllEvents, FetchEvent, Favorites, Profile,
+  Test, SecondTest, Login, AllEvents, FetchEvent, Favorites, Profile, Splash
 } from './Components/index';
 import { createStackNavigator } from 'react-navigation';
 
@@ -41,6 +41,9 @@ const RootStack = createMaterialBottomTabNavigator(
     Login: {
       screen: Login
     },
+    Splash: {
+      screen: Splash
+    },
     SingleEvent: {
       screen: FetchEvent,
     },
@@ -73,6 +76,7 @@ const RootStack = createMaterialBottomTabNavigator(
     activeTintColor: `white`
   },
 );
+
 
 const client = new ApolloClient({
   uri: `http://localhost:8080/graphql`,
