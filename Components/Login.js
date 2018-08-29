@@ -35,8 +35,6 @@ export default class Login extends React.Component {
   async componentDidUpdate() {
     // await AsyncStorage.clear();
     const userId = await findUser();
-    console.log(`inside did update login:`, userId);
-    console.log(`component props for login:`, this.props);
     if (userId) {
       this.props.navigation.replace(`Main`);
     }
