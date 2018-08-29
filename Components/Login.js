@@ -64,7 +64,6 @@ export default class Login extends React.Component {
   handleOAuthLogin = async () => {
     // gets the url to direct back to the app after any request to linkedin
     let redirectUrl = AuthSession.getRedirectUrl();
-    console.log(redirectUrl);
 
     let backendAuth = await this.handlePassportLogin();
   };
@@ -74,16 +73,13 @@ export default class Login extends React.Component {
     // WebBrowser.dismissAuthSession();
     const data = Linking.parse(event.url);
     // await this.setState({ redirectData: data })
-    console.log(`data in handleRedirect`, data);
   };
 
   storeData = async data => {
     try {
       await AsyncStorage.setItem(`userId`, data);
-      console.log(`storing the user:`, data);
     } catch (error) {
       // Error saving data
-      console.log(`error inside storedata:`, error);
     }
   };
 
@@ -102,7 +98,6 @@ export default class Login extends React.Component {
       const { data } = await axios.get(
         `${this.state.serverUrl}/auth/linkedin/user`
       );
-      console.log(`this is front end user info:`, data);
 
       this.storeData(data.id + ``);
       this.setState({ userId: data.id });
