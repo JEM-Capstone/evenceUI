@@ -42,12 +42,10 @@ class Profile extends Component {
 
   async componentDidMount() {
     const userId = await findUser();
-    console.log('inside profile:', userId);
     this.setState({ userId: userId });
   }
 
   render() {
-    console.log('this state in profile:', this.state.userId);
     return (
       <SafeAreaView style={styles.container}>
         {this.state.userId && (

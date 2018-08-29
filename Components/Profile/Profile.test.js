@@ -6,5 +6,5 @@ import CheckboxWithLabel from './Profile.js'
 
 test('renders a profile', () => {
   const profile = shallow(<CheckboxWithLabel />)
-  console.log('profile', profile)
+  console.log('profile', profile.text())
 })
