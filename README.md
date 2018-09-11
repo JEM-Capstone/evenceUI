@@ -1,3 +1,16 @@
+TO SET UP FOR USE ON A NEW NETWORK IN DEVELOPMENT
+
+  1) In ```urls.js``` change ```serverUrl``` to ```http://${your_ip}:8080```
+
+TO RUN PROJECT WITH EXPO:
+
+  1) Clone this repository
+  2) Download Expo XDE
+  3) Open and run the project in Expo XDE
+  4) Start the Evence Server (see instructions here - https://github.com/JEM-Capstone/Evence_server)
+  5) Open the app on a mobile emulator or use the expo application on a mobile device
+
+
 This project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app).
 
 Below you'll find information about performing common tasks. The most recent version of this guide is available [here](https://github.com/react-community/create-react-native-app/blob/master/react-native-scripts/template/README.md).
